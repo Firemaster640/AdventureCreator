@@ -997,7 +997,7 @@ function editEntry(index) {
           $("<option>").val("Groundshark").text("C|Landhai").appendTo(Mob);
           $("<option>").val("Slamander").text("C|Salamander").appendTo(Mob);
           $("<option>").val("Troll").text("C|Troll").appendTo(Mob);
-          $("<option>").val("Treant").text("C|Treant").appendTo(Mob);
+  //        $("<option>").val("Treant").text("C|Treant").appendTo(Mob);
           $("<option>").val("Wyern").text("C|Wyern").appendTo(Mob);
           $("<option>").val("Basilisk").text("D|Basilisk").appendTo(Mob);
           $("<option>").val("Coutail").text("D|Treant").appendTo(Mob);
@@ -1051,7 +1051,7 @@ function editEntry(index) {
           $("<option>").val("Thief_Sword").text("NPC|Dieb (Schwert)").appendTo(Mob);
           $("<option>").val("Thief_Crossbow").text("NPC|Dieb (Armbrust)").appendTo(Mob);
           $("<option>").val("Thief_Bow").text("NPC|Dieb (Bogen)").appendTo(Mob);
-          $("<option>").val("Thief_Dagger").text("NPC|Dieb (Dolch)").appendTo(Mob);
+     //     $("<option>").val("Thief_Dagger").text("NPC|Dieb (Dolch)").appendTo(Mob);
           $("<option>").val("Mage_Fire").text("NPC|Magier (Feuer)").appendTo(Mob);
           $("<option>").val("Mage_Water").text("NPC|Magier (Wasser)").appendTo(Mob);
           $("<option>").val("Mage_Shock").text("NPC|Magier (Blitz)").appendTo(Mob);
@@ -1481,11 +1481,11 @@ let user = JSON.parse(window.localStorage.getItem("user")) || [];
 // ############## Zeit steuern ##############
     if (aktuell.type == "Zeit steuern") { var EINTRAG = "<timer><" + aktuell.Ctr + "><" + aktuell.Zeit + "><" + aktuell.nex + ">"}
 // ############## Zeitkontrolle ##############
-    if (aktuell.type == "Zeitkontrolle") { var EINTRAG = "<timer><ctr>" + aktuell.nexA + "><" + aktuell.nexB + ">"}
+    if (aktuell.type == "Zeitkontrolle") { var EINTRAG = "<timer><ctr><" + aktuell.nexA + "><" + aktuell.nexB + ">"}
 // ############## Schalter steuern ##############
     if (aktuell.type == "Schalter steuern") { var EINTRAG = "<switch><set><" + aktuell.ID + "><" + aktuell.Ctr + "><" + aktuell.nex + ">"}
 // ############## Schalterkontrolle ##############
-    if (aktuell.type == "Schalterkontrolle") { var EINTRAG = "<switch><if>" + aktuell.ID + "><" + aktuell.nexA + "><" + aktuell.nexB + ">"}
+    if (aktuell.type == "Schalterkontrolle") { var EINTRAG = "<switch><if><" + aktuell.ID + "><" + aktuell.nexA + "><" + aktuell.nexB + ">"}
 // ############## Punkte steuern ##############
     if (aktuell.type == "Punkte steuern") { var EINTRAG = "<point><" + aktuell.Ctr + "><" + aktuell.ID + "><" + aktuell.Wert + "><" + aktuell.nex + ">"}
 // ############## Punktekontrolle ##############
@@ -1573,8 +1573,7 @@ let Mobs = Array.from(new Set(Mobs_Raw));
           })
           .then(function() {
             window.localStorage.setItem("user", JSON.stringify(user));
-            dialog.remove();
-            location.reload();
+
           });
     } else {
         alert("Fehler bei den Einträgen:\n" + FEHLER)
@@ -1586,7 +1585,9 @@ let Mobs = Array.from(new Set(Mobs_Raw));
             }
             window.localStorage.setItem("user", JSON.stringify(user));
             dialog.remove();
+setTimeout(function() {
             location.reload();
+}, 1000);
            });
   let cancelButton = $("<button>Abbrechen</button>").appendTo(dialog);
   cancelButton.click(function() {
